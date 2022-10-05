@@ -4,5 +4,8 @@
     ViewData["Title"] = "Información escuela";
     Layout = "_Layout";
 }
-
-<h1>Escuela: @Model.Nombre</h1>
+<!--ViewBag y ViewData son dos vistas de la misma información lo que cambia es la manera-->
+<!--Con ViewBag podemos mandar elementos extra a los que se encuentra en el modelo-->
+<h1>Escuela: @ViewData["Title"]</h1>
+<h2>Nombre: @Model.Nombre</h2>
+<h2>Año fundación: @Model.AñoDeCreación</h2>

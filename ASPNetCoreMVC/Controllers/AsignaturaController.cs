@@ -7,12 +7,35 @@ namespace ASPNetCoreMVC.Controllers
     {
         public IActionResult Index()
         {
-            var asignatura = new Asignatura
+            return View(new Asignatura
             {
-                UniqueId = Guid.NewGuid().ToString(),
-                Nombre = "Programación"
-            };
-            return View(asignatura);
+                Nombre = "Programación",
+                UniqueId = Guid.NewGuid().ToString()
+            });
+        }
+
+        public IActionResult MultiAsignatura()
+        {
+            var listaAsignaturas = new List<Asignatura>(){
+                            new Asignatura{Nombre="Matemáticas",
+                                UniqueId= Guid.NewGuid().ToString()
+                            } ,
+                            new Asignatura{Nombre="Educación Física",
+                                UniqueId= Guid.NewGuid().ToString()
+                            },
+                            new Asignatura{Nombre="Castellano",
+                                UniqueId= Guid.NewGuid().ToString()
+                            },
+                            new Asignatura{Nombre="Ciencias Naturales",
+                                UniqueId= Guid.NewGuid().ToString()
+                            }
+                            ,
+                            new Asignatura{Nombre="Programación",
+                                UniqueId= Guid.NewGuid().ToString()
+                            }
+                };
+
+            return View("MultiAsignatura", listaAsignaturas);
         }
     }
 }

@@ -1,0 +1,15 @@
+﻿@model List<Asignatura>
+
+@{
+    ViewData["Title"] = "Información asignaturas";
+    Layout = "Simple";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<strong>Desde la vista principal: </strong>
+
+@foreach(var asignatura in Model)
+{
+    <partial name="AsignaturaSimple" model="asignatura" />
+}

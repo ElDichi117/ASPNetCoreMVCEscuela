@@ -1,22 +1,22 @@
 ﻿using System;
 using ASPNetCoreMVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace ASPNetCoreMVC.Controllers
 {
     public class EscuelaController : Controller
     {
+        private EscuelaContext _context; 
         public IActionResult Index()
         {
-            var escuelas = new Escuela();
-            escuelas.AñoDeCreación = 2005;
-            escuelas.UniqueId = Guid.NewGuid().ToString();
-            escuelas.Nombre = "PLATZI SCHOOL";
-            escuelas.Pais = "México";
-            escuelas.Ciudad = "Ciudad de México";
-            escuelas.TipoEscuela = TiposEscuela.Secundaria;
-            escuelas.Dirección = "México Av. Revolución C.P: 09809";
-            return View(escuelas);
+            var escuela = _context.Escuelas.FirstOrDefault();
+            return View(escuela);
+        }
+
+        public EscuelaController (EscuelaContext context)
+        {
+            _context = context;
         }
     }
 }

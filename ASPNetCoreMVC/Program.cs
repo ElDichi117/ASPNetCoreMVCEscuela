@@ -1,9 +1,29 @@
+using ASPNetCoreMVC.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//Agregndo el contexto de la base de datos
+builder.Services.AddDbContext<EscuelaContext>(options => options.UseInMemoryDatabase("testDB"));
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var serv = scope.ServiceProvider;
+    try
+    {
+        var contex = serv.GetRequiredService<EscuelaContext>();
+        contex.Database.EnsureCreated();
+    }
+    catch (System.Exception)
+    {
+        throw;
+    }
+
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

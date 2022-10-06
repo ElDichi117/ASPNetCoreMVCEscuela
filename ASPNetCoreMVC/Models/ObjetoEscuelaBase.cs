@@ -2,17 +2,17 @@
 {
     public abstract class ObjetoEscuelaBase
     {
-        public string UniqueId { get; set; }
+        public string Id { get; set; }
         public string Nombre { get; set; }
 
         public ObjetoEscuelaBase()
         {
-            UniqueId = Guid.NewGuid().ToString();
+            Id = Guid.NewGuid().ToString();
         }
 
         public override string ToString()
         {
-            return $"{Nombre},{UniqueId}";
+            return $"{Nombre},{Id}";
         }
     }
 }

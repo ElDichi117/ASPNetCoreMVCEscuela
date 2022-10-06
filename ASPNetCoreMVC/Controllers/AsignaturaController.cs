@@ -1,5 +1,7 @@
 ﻿using ASPNetCoreMVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace ASPNetCoreMVC.Controllers
 {
@@ -7,35 +9,20 @@ namespace ASPNetCoreMVC.Controllers
     {
         public IActionResult Index()
         {
-            return View(new Asignatura
-            {
-                Nombre = "Programación",
-                Id = Guid.NewGuid().ToString()
-            });
+            return View(_context.Asignaturas.FirstOrDefault());
         }
 
         public IActionResult MultiAsignatura()
         {
-            var listaAsignaturas = new List<Asignatura>(){
-                            new Asignatura{Nombre="Matemáticas",
-                                Id= Guid.NewGuid().ToString()
-                            } ,
-                            new Asignatura{Nombre="Educación Física",
-                                Id= Guid.NewGuid().ToString()
-                            },
-                            new Asignatura{Nombre="Castellano",
-                                Id= Guid.NewGuid().ToString()
-                            },
-                            new Asignatura{Nombre="Ciencias Naturales",
-                                Id= Guid.NewGuid().ToString()
-                            }
-                            ,
-                            new Asignatura{Nombre="Programación",
-                                Id= Guid.NewGuid().ToString()
-                            }
-                };
+            //Va al contexto y trae la lista completa de las asignaturas   
+            return View("MultiAsignatura", _context.Asignaturas);
+        }
 
-            return View("MultiAsignatura", listaAsignaturas);
+        private EscuelaContext _context;
+
+        public AsignaturaController(EscuelaContext context)
+        {
+            _context = context;
         }
     }
 }

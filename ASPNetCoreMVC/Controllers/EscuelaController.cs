@@ -10,6 +10,7 @@ namespace ASPNetCoreMVC.Controllers
         private EscuelaContext _context; 
         public IActionResult Index()
         {
+            //Solo tomamos la primer escuela que tenemos en el contexto
             var escuela = _context.Escuelas.FirstOrDefault();
             return View(escuela);
         }

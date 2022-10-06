@@ -5,13 +5,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-//Agregndo el contexto de la base de datos
+//Agregndo el contexto de la base de datos y seleccionando el tipo de DB que se va a usar
 builder.Services.AddDbContext<EscuelaContext>(options => options.UseInMemoryDatabase("testDB"));
 
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
+    //Estre try garantiza que antes de cargar la DB se debe de crear los datos
     var serv = scope.ServiceProvider;
     try
     {

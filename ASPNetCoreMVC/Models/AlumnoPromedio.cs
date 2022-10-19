@@ -1,4 +1,7 @@
-﻿namespace ASPNetCoreMVC.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace ASPNetCoreMVC.Models
 {
     public class AlumnoPromedio
     {

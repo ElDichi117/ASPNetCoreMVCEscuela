@@ -1,4 +1,6 @@
-﻿namespace ASPNetCoreMVC.Models
+﻿using System;
+
+namespace ASPNetCoreMVC.Models
 {
     public class Evaluación : ObjetoEscuelaBase
     {

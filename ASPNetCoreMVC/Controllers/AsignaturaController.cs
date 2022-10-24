@@ -12,10 +12,17 @@ namespace ASPNetCoreMVC.Controllers
         [Route("Asignatura/Index/{asignaturaId}")]
         public IActionResult Index(string asignaturaId)
         {
-            var asignatura = from asig in _context.Asignaturas
-                             where asig.Id == asignaturaId
-                             select asig;
-            return View(asignatura.Single());
+            if (string.IsNullOrEmpty(asignaturaId))
+            {
+                var asignatura = from asig in _context.Asignaturas
+                                 where asig.Id == asignaturaId
+                                 select asig;
+                return View(asignatura.Single());
+            }
+            else
+            {
+                return View("MultiAsignatura", _context.Asignaturas);
+            }
         }
 
         public IActionResult MultiAsignatura()

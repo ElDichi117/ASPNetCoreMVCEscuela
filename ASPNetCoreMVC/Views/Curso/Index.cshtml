@@ -1,0 +1,19 @@
+﻿@model Curso
+
+@{
+    ViewData["Title"] = "Información Curso";
+    Layout = "Simple";
+}
+<!--ViewBag y ViewData son dos vistas de la misma información lo que cambia es la manera-->
+<!--Con ViewBag podemos mandar elementos extra a los que se encuentra en el modelo-->
+<h1>@ViewData["Title"]</h1>
+
+<strong>Desde la vista principal: </strong>
+
+<p>
+    Nombre: @Model.Nombre <br/>
+    Id: @Model.Id
+</p>
+
+<strong>Desde la vista parcial </strong>
+<partial name="ObjetoEscuelaSimple">

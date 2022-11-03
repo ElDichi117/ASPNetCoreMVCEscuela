@@ -11,4 +11,15 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Curso\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Curso\MultiCurso.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
